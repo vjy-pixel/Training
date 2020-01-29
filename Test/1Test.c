@@ -3,8 +3,8 @@
 #include<string.h>
 #define MAX_LINES 10
 
-int ifault_check(char strop[]);
-int imaxlen(int ilen[]);
+int faultCheck(char strop[]);  //To check whether line is blank(faulty) or not.
+int maxLength(int ilen[]); 		 // To find maximum length amongst all lines
 int iblank=0;
 void main(){
 	FILE *fp;
@@ -19,7 +19,7 @@ void main(){
 		//fflush(stdin);
 		while(!feof(fp) && ilinecount<10){
 			fgets(strop,256,fp);
-			int ifault = ifault_check(strop);
+			int ifault = faultCheck(strop);
 
 			if(ifault==0){
 				ilinecount++;
@@ -27,28 +27,30 @@ void main(){
 			}
 		
 		}
-		int imaxidx = imaxlen(ilen);
+		
+		/*call to maxLength function*/
+		int imaxidx = maxLength(ilen); 
 		
 		int isum=0;
-		for(int index=0; index<= imaxidx; index++){
+		for(int index=0; index <=imaxidx; index++){
 			isum+= ilen[index];
 			
 		}
 		
-		fseek(fp,(long)(isum-ilen[imaxidx]+iblank),0);
+		fseek(fp,(long)(isum -ilen[imaxidx] +iblank),0);
 		
-		if(ilen[imaxidx]==0)
+		if(ilen[imaxidx] ==0)
 			printf("File is Empty!!!\n");
 		else{
-			fgets(strop,ilen[imaxidx],fp);
-			printf("Longest String:%s at %d position\n",strop,imaxidx+1);		
+			fgets(strop, ilen[imaxidx], fp);
+			printf("Longest String:%s at %d position\n", strop, imaxidx+1);		
 
 		}
 		
 	}
 }
 
-int ifault_check(char strop[]){
+int faultCheck(char strop[]){
 	int iflag=0;
 	for(int index=0; index<strlen(strop); index++){
 		if(strop[index]==' ' || strop[0]=='\n'){
@@ -61,7 +63,7 @@ int ifault_check(char strop[]){
 	return iflag;
 }
 
-int imaxlen(int ilen[]){
+int maxLength(int ilen[]){
 	int imax=0,imaxidx;
 	for(int index=0; index<MAX_LINES; index++){
 		if(ilen[index] > imax){
