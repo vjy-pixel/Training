@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
 	cout << "============ Swapping Number ==============" << endl << endl;
-	int in1,in2;
+	long int in1,in2;
 	cout << "Enter first number:";
 	cin >> in1;
 	cout << "Enter Second number:";
@@ -21,15 +21,15 @@ int main()
 	
 	
 	cout << "============== Find Leading Zeroes ==============" << endl << endl;
-	int in3,index=0;
+	long int in3,index=0;
 	cout << "Enter Number:";
 	cin >> in3;
-	
+	cout << sizeof(in3)*8;
 	while(1) 
 		if(pow(2,index++)-in3>=0) 
 			break;
 		else 
 			continue;
-		cout << "Leading zeroes will be:"<< 64-index << endl;
+		cout << "Leading zeroes will be:"<< (sizeof(in3)*8)-index << endl;
 	cout << endl << "==============================================" << endl;	
 }

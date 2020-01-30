@@ -20,7 +20,7 @@ void main(){
 	
 	int a[iRow1][iCol1],b[iRow2][iCol2];
 	
-	
+	/*Input to the Matrices*/
 	printf("For A:\n");
 	for(int iRow =0; iRow <iRow1; iRow++)
 		for(int iCol=0; iCol <iCol1; iCol++)
@@ -32,6 +32,7 @@ void main(){
 			scanf("%d", &b[iRow][iCol]);
 
 
+	/*Multiplication Process*/
 	int c[iRow1][iCol2];
 	if(iCol1 !=iRow2)
 		printf("Multiplication not possible!!!");
@@ -48,7 +49,9 @@ void main(){
 			}
 	}
 	printf("\n");
-//	int i,j;
+
+
+	/*Printing Final Matrix*/
 	for(int iRow=0; iRow <iRow1; iRow++){
 	    printf("\n");
 		for(int iCol=0; iCol <iCol2; iCol++)
