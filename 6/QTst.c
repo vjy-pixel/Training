@@ -1,10 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include "SQHeader.h"
 
 int main(){
 	
 	int iSize;
-	int iFront=0,iRear=-1;
+	//int iFront=0,iRear=-1;
 	
 	printf("Enter Number of Elements:");
 	scanf("%d",&iSize);
@@ -21,39 +22,19 @@ int main(){
 	switch(iChoice){
 		
 		case 1:
-			
-			if(iRear<iSize-1){
-				printf("Enter element to insert:");
-				scanf("%d",&iElement);
-				*(ptrArray+ (++iRear))= iElement;
-			}
-			else
-				printf("Queue is Full\n");
+			//int iElement;
+			Enqueue(ptrArray, iElement);
 			break;
 
 		case 2:
-			if(iRear==-1)
-				printf("Queue is Empty\n");
-			else if(iFront==iRear){
-				iRear=-1;
-				iFront=0;
-			}			
-			else 
-				iFront++;
 			
+			Dequeue(ptrArray);
 			break;
 
 		case 3:
 			
-			for(int index=0;index<iSize;index++){
-				
-				if(index>=iFront && index<=iRear)
-					printf("%d ",*(ptrArray+index));
-				
-				else
-					printf("_ ");
-			}
 			
+			View(ptrArray);
 			break;
 		
 		case 4:
@@ -66,4 +47,36 @@ int main(){
 }
 
 
-					
+void Enqueue(int* ptrArray, int iElement){
+	if(iRear<iSize-1){
+				printf("Enter element to insert:");
+				scanf("%d",&iElement);
+				*(ptrArray+ (++iRear))= iElement;
+			}
+			else
+				printf("Queue is Full\n");
+}				
+
+
+void Dequeue(int* ptrArray){
+	if(iRear==-1)
+				printf("Queue is Empty\n");
+			else if(iFront==iRear){
+				iRear=-1;
+				iFront=0;
+			}			
+			else 
+				iFront++;
+}
+
+
+void View(int*){
+	for(int index=0;index<iSize;index++){
+				
+				if(index>=iFront && index<=iRear)
+					printf("%d ",*(ptrArray+index));
+				
+				else
+					printf("_ ");
+			}
+}

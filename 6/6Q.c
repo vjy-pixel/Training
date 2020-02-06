@@ -21,7 +21,7 @@ int main(){
 	switch(iChoice){
 		
 		case 1:
-			
+			//int iElement;
 			if(iRear<iSize-1){
 				printf("Enter element to insert:");
 				scanf("%d",&iElement);
