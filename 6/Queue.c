@@ -57,6 +57,7 @@ int main(){
 		default:
 			printf("Please make valid choice!!!\n");
 	}
+	printf("Front:%d\nRear:%d\n",iFront,iRear);
 }
 }
 
@@ -93,8 +94,6 @@ void Dequeue(int* ptrArray){
 			*(ptrArray+iFront+index) = *(ptrArray+iFront+index+1);
 		}
 		*(ptrArray+iRear) = iTemp;
-	 
-		
 }
 
 
@@ -129,6 +128,15 @@ void View(int* ptrArray){
 		for(int index=iFront; index<=iRear; index++){
 			printf("%d ",*(ptrArray+index));
 		}	
+	}
+	else if(iRear<iFront){
+		for(int index=0; index<=iRear; index++){
+			printf("%d ",*(ptrArray+index));
+		}
+
+		for(int index=iFront; index<iSize; index++){
+			printf("%d ",*(ptrArray+index));
+		}
 	}
 
 	else{

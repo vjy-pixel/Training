@@ -8,15 +8,19 @@ void Pop(int*);
 void View(int *);
 
 int main(){
-	//int iSize;
-	//int iHead=-1;
 	
 	printf("Enter Size of the Stack:");
 	scanf("%d",&iSize);
+	
+	/* A pointer to the Array */
 	int *ptrArray = (int*)calloc(iSize, sizeof(int));
 	//int arr[in];
 	
-	int iChoice,iElement;
+	/* To choose the Stack Operation */
+	int iChoice;
+
+	/* An element to be Pushed in Stack*/
+	int iElement;
 	
 	while(1){
 	printf("\n1.Push\n2.Pop\n3.View\n4.Exit\n");

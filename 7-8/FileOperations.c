@@ -2,8 +2,13 @@
 #include<stdlib.h>
 #include<string.h>
 
-
+/*Content entered by the user will be inserted in the file named by user.*/
 void InsertContent(FILE*);
+
+/*
+	* The list of files in the folder will be shown to user
+	* User will enter the name of the file with extension
+*/
 void ShowContent(FILE*);
 void CopyContent(FILE*, FILE*);
 
@@ -34,7 +39,7 @@ void main(){
 	
 				FILE *fp1 = fopen(strFile1Name,"w");
 	
-				if(fp1==NULL){
+				if(NULL==fp1){
 					printf("File Not Found!!!!\n");
 					break;
 				}
@@ -57,7 +62,7 @@ void main(){
 				
 				FILE* fp = fopen(strFileName,"r");
 				
-				if(fp==NULL){
+				if(NULL == fp){
 					printf("File Not Found!!!!\n");
 					break;
 				}
@@ -71,7 +76,7 @@ void main(){
 			case 3:
 				fp1 = fopen(strFile1Name,"r");
 
-				if(fp1==NULL){
+				if(NULL == fp1){
 					printf("File Not Found!!!!\n");
 					break;
 				}
@@ -82,7 +87,7 @@ void main(){
 				strcat(strFile2Name,".txt");
 				FILE *fp2 = fopen(strFile2Name,"w");
 
-				if(fp2==NULL){
+				if(NULL == fp2){
 					printf("File Not Found!!!!\n");
 					exit(0);
 				}
