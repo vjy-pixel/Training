@@ -3,8 +3,8 @@
 
 using namespace std;
 
-/***************************************************
-	* A method that takes pointer as an argument 
+/****************************************************
+	* A method that takes address as an argument 
 	* and recursively calls the same function by
 	* decrementing value of the address to which 
 	* pointer is pointing.
@@ -12,8 +12,8 @@ using namespace std;
 	* @param int*
 	*
 	* @return unsigned long long 
-****************************************************/
-unsigned long long Factorial(int*);
+*****************************************************/
+unsigned long long Factorial(int&);
 
 int main(){
 	
@@ -22,21 +22,22 @@ int main(){
 	cout << "           Factorial          \n";
 	cout << "------------------------------\n";
 	cout << "Enter Number:";
-	cin >>iNumber; // A number whose factorial to be found.
+	cin >>iNumber;
 
 	if(iNumber < 0){
 		cout << "Factorial of Negative Number is not Possible!!\n";
 		exit(0);
 	}
 
-	unsigned long long iResult = Factorial(&iNumber);
+	unsigned long long iResult = Factorial(iNumber);
 	cout << iResult << endl;
 }
 
-/* Pass By Pointer*/
-unsigned long long Factorial(int* ptrNumber){
-	if(*ptrNumber < 2)
+/* Pass By Reference*/
+unsigned long long Factorial(int& refNumber){
+	if(refNumber < 2)
 		return 1;
-	else
-		return ((*ptrNumber)--) * Factorial(ptrNumber);
+	else{
+		return ((refNumber)--) * Factorial(refNumber);
+	}
 }

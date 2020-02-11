@@ -2,14 +2,38 @@
 #include<stdlib.h>
 #include<string.h>
 
-/*Content entered by the user will be inserted in the file named by user.*/
+/*****************************************************************************
+	* Content entered by the user will be inserted in the file named by user.
+	*
+	* @param FILE* (File Pointer)
+	*
+	* @return void
+******************************************************************************/
 void InsertContent(FILE*);
 
-/*
+
+/*******************************************************************
 	* The list of files in the folder will be shown to user
-	* User will enter the name of the file with extension
-*/
+	*
+	* User will enter the name of the desired file with extension
+	*
+	* @param FILE* (File Pointer)
+	*
+	* return void
+********************************************************************/
 void ShowContent(FILE*);
+
+/*************************************************************
+	* This method will accept two file pointers as arguments
+	*
+	* First argument will be Source File Pointer
+	*
+	* Second argument will be Destination File Pointer
+	*
+	* @param FILE*, FILE*
+	*
+	* @return void
+**************************************************************/
 void CopyContent(FILE*, FILE*);
 
 void main(){
