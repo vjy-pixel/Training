@@ -4,8 +4,31 @@ using namespace std;
 #include<bits/stdc++.h>
 #define N 5
 
-
+/*********************************************************************************
+	* This method is to take input in given 2D character array.
+	*
+	* This method will accept one reference varialbe as argument
+	* 
+	* Reference variable will be refering to the 2D character array
+	*
+	* @param char&
+	*
+	* @return void
+*********************************************************************************/
 void InsertDataIn2DArray(char (&ptrArray)[N][N]);
+
+
+/**************************************************************************
+	* This method will sort given 2D character array in alphanumeric order.
+	*
+	* This method will accept one reference varialbe as argument
+	* 
+	* Reference variable will be refering to the 2D character array
+	*
+	* @param char&
+	*
+	* @return void
+***************************************************************************/
 void Sort2DArray(char (&ptrArray)[N][N]);
 
 int main(){
@@ -15,13 +38,6 @@ int main(){
 	
 
 	InsertDataIn2DArray(ptrArray);
-	//char *cTemp = ptrArray[0];
-	//strcpy(ptrArray[1], ptrArray[4]);
-	//strcpy(ptrArray[2], cTemp);
-	
-	//cTemp = (ptrArray)[0];
-	//ptrArray[1] = cTemp;
-	//cout << "cTemp:" << ptrArray[1]<< endl;
 	
 	Sort2DArray(ptrArray);
 
@@ -49,26 +65,29 @@ void InsertDataIn2DArray(char (&ptrArray)[N][N]){
 
 
 void Sort2DArray(char (&ptrArray)[N][N]){
-	int cnt=0;
+	
 	for(int row=0; row<N-1; row++){
-		cout << ++cnt << endl;
+		
 		for(int col=row+1; col< N; col++){
-			cout << ptrArray[row][0] << " --" << ptrArray[col][0] << "\n";
-			if(ptrArray[row][0]>ptrArray[col][0]){
-				char *cTemp = *(ptrArray+row);
-				cout << "cTemp:" << cTemp<< endl;
-				//strcpy(cTemp, ptrArray[row]);
+			
+			int iCount = 0;
+
+			if(ptrArray[row][iCount]>ptrArray[col][iCount]){
+				char cTemp[N];
+				strcpy(cTemp, ptrArray[row]);
 				strcpy(ptrArray[row], ptrArray[col]);
-				cout << "1:" << ptrArray[row]<< endl;
-				cout << "cTemp:" << cTemp<< endl;
 				strcpy(ptrArray[col], cTemp);
-				cout << "2:" << ptrArray[col]<< endl;
-				//break;
-				//cTemp = ptrArray[row];
-				//ptrArray[row] = ptrArray[col];
-				//ptrArray[col] = cTemp;
-				
+				break;
 			}
+			
+			else if(ptrArray[row][iCount++]==ptrArray[col][iCount++]){
+				char cTemp[N];
+				strcpy(cTemp, ptrArray[row]);
+				strcpy(ptrArray[row], ptrArray[col]);
+				strcpy(ptrArray[col], cTemp);
+				break;
+			}
+			
 		}
 	}
 }
