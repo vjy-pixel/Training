@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 
 #define MAX_STR_LENGTH 1000
-using namespace std;
+
 
 /*************************************************************************************************
 	* This method is to copy from one string(first arg) to another string(second arg)
@@ -64,17 +64,17 @@ int main()
 	int iLen1, iLen2;
 	while(1){
 		
-		cout << "1. Copy\n2. Compare\n3. Concate\n4.Exit\n";
-		cout << "Enter Your Choice:";
-		cin >> iChoice;
+		std::cout << "1. Copy\n2. Compare\n3. Concate\n4.Exit\n";
+		std::cout << "Enter Your Choice:";
+		std::cin >> iChoice;
 	
 	switch(iChoice){
 		
 		case 1:
-			cout << "================== Copy ===================\n";
+			std::cout << "================== Copy ===================\n";
 			
-			cout << "Enter String to Copy:";
-			cin >> str1;
+			std::cout << "Enter String to Copy:";
+			scanf(" %[^\n]s",str1);
 	
 			/********************************************************************************** 
 				* A loop to check whether entered value of at most to be accessed characeters
@@ -83,13 +83,13 @@ int main()
 			***********************************************************************************/
 			while(1){
 				
-				cout << "Enter Range till u wanna Copy:";
-				cin >> iN;
+				std::cout << "Enter Range till u wanna Copy:";
+				std::cin >> iN;
 				if(iN < strlen(str1))
 					break;
 				else{
-					cout << "Please Try Again!!!\n";
-					cout << "As entered value is greater than length of entered string\n";
+					std::cout << "Please Try Again!!!\n";
+					std::cout << "As entered value is greater than length of entered string\n";
 					continue;
 				}
 			}
@@ -97,27 +97,25 @@ int main()
 			/************ cpystrn() call *************/
 			cRes = cpystrn(cRes,str1,iN);
 			
-			cout << "String Copied!!!\n";
-			cout << cRes << endl;
+			std::cout << "\nString Copied!!!\n\n";
+			std::cout << cRes << std::endl << std::endl;
 			
-			cout << "===========================================\n";
+			std::cout << "===========================================\n";
 
 			free(cRes);
 			free(str1);
 			free(str2);
 			
 			break;
+		
 		case 2:
-			cout << "------------------- Compare -----------------\n";
+			std::cout << "------------------- Compare -----------------\n";
 
-			cout << "Enter String from which to Compare:";
-			cin >> str1;
+			std::cout << "Enter String from which to Compare:";
+			scanf(" %[^\n]s",str1);
 
-			cout << "Enter Range till u wanna Compare:";
-			cin >> iN;
-
-			cout << "Enter String to which to Compare?:";
-			cin >> str2;
+			std::cout << "Enter String to which to Compare?:";
+			scanf(" %[^\n]s",str2);
 
 			/********************************************************************************** 
 				* A loop to check whether entered value of at most to be accessed characeters
@@ -126,13 +124,13 @@ int main()
 			***********************************************************************************/		
 			while(1){
 				
-				cout << "Enter Range till u wanna Copy:";
-				cin >> iN;
+				std::cout << "\nEnter Range till u wanna Copy:";
+				std::cin >> iN;
 				if(iN < strlen(str1) && iN < strlen(str2))
 					break;
 				else{
-					cout << "Please Try Again!!!\n";
-					cout << "As entered value is greater than length of entered strings\n";
+					std::cout << "Please Try Again!!!\n";
+					std::cout << "As entered value is greater than length of entered strings\n";
 					continue;
 				}
 			}
@@ -141,27 +139,27 @@ int main()
 			iRes = cmpstrn(str1, str2, iN);		
 
 			if(iRes == 0)
-				cout << "str1 is same as str2 till location" << iN << endl;
+				std::cout << "str1 is same as str2 till location " << iN << std::endl;
 
 			else if(iRes > 0)
-				cout << "str1 is greater than str2 till location" << iN << endl;				
+				std::cout << "str1 is greater than str2 till location " << iN << std::endl;				
 
 			else
-				cout << "str1 is less than str2 till location" << iN << endl;
+				std::cout << "str1 is less than str2 till location " << iN << std::endl;
 
-			cout << "-----------------------------------------------\n";
+			std::cout << "-----------------------------------------------\n";
 			free(str1);
 			free(str2);
 			break;
 
 		case 3:
 			
-			cout << "++++++++++++++++++ Concate +++++++++++++++++\n";
-			cout << "Enter String from which to Concate:";
-			cin >> str1;
+			std::cout << "++++++++++++++++++ Concate +++++++++++++++++\n";
+			std::cout << "Enter String from which to Concate:";
+			scanf(" %[^\n]s",str1);
 
-			cout << "Enter Range till u wanna Concate:";
-			cin >> iN;
+			std::cout << "Enter String to which to Concate?:";
+			scanf(" %[^\n]s",str2);
 			
 			/********************************************************************************** 
 				* A loop to check whether entered value of at most to be accessed characeters
@@ -170,28 +168,27 @@ int main()
 			***********************************************************************************/
 			while(1){
 				
-				cout << "Enter Range till u wanna Copy:";
-				cin >> iN;
+				std::cout << "\nEnter Range till u wanna Copy:";
+				std::cin >> iN;
 				if(iN < strlen(str1))
 					break;
 				else{
-					cout << "Please Try Again!!!\n";
-					cout << "As entered value is greater than length of entered string\n";
+					std::cout << "Please Try Again!!!\n";
+					std::cout << "As entered value is greater than length of any of entered string\n";
 					continue;
 				}
 			}
 
-			cout << "Enter String to which to Concate?:";
-			cin >> str2;
+			
 
 			cRes = (char*) malloc(sizeof(char)*(iN));
 			
 			/************ catstrn() call *************/
 			cRes = catstrn(str2,str1,iN);
 			
-			cout << "String Concated!!!\n";
-			cout << cRes << endl;
-			cout << "++++++++++++++++++++++++++++++++++++++++++++\n";
+			std::cout << "String Concated!!!\n";
+			std::cout << cRes << std::endl;
+			std::cout << "++++++++++++++++++++++++++++++++++++++++++++\n";
 			
 			free(cRes);
 			free(str1);
@@ -203,7 +200,7 @@ int main()
 			exit(0);
 				
 		default:
-			cout << "Please make valid Choice!!!\n";
+			std::cout << "Please make valid Choice!!!\n";
 	}
 	}	
 	return 0;	
@@ -213,17 +210,17 @@ char* cpystrn(char* cRes, char* str, int iN){
 	
 	cRes = (char*) malloc(sizeof(char)*iN);
 	if(NULL == cRes)
-		cout << "Unable to get memory for Dest. String!!!\n";
+		std::cout << "Unable to get memory for Dest. String!!!\n";
 	else{
 		for(int index=0; index<iN; index++){
-			//cout << "String Char:" << str[index] << endl;
+			//std::cout << "String Char:" << str[index] << std::endl;
 			cRes[index] = str[index];
-			//cout << "String Char:" << cRes[index] << endl;
+			//std::cout << "String Char:" << cRes[index] << std::endl;
 		}
 		cRes[iN] = '\0';
-		cout << strlen(cRes) << endl;
+		std::cout << strlen(cRes) << std::endl;
 	}
-	//cout << cRes << endl;
+	//std::cout << cRes << std::endl;
 	return cRes;
 }
 
@@ -232,8 +229,8 @@ int cmpstrn(char* sStr, char* dStr, int iN){
 	int iLen1 = strlen(sStr);
 	int iLen2 = strlen(dStr);
 
-	cout << "Length of String 1:" << iLen1 << endl;
-	cout << "Length of String 2:" << iLen2 << endl;
+	std::cout << "Length of String 1:" << iLen1 << std::endl;
+	std::cout << "Length of String 2:" << iLen2 << std::endl;
 
 	
 	if(sStr > dStr)
