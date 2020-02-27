@@ -1,0 +1,7 @@
+#include "sem1.c"
+#include "sem2.c"
+
+void main(){
+	firstSem();
+	secondSem();
+}
