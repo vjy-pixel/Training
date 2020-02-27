@@ -71,6 +71,12 @@ void main(){
 
 
 	}
+
+	system("md5sum source.txt");
+	printf("\n");
+	system("md5sum %s",
+
+
 }
 
 void CopyContent(FILE* fp1, FILE* fp2){
