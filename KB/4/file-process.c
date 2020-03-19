@@ -36,9 +36,12 @@ void main(){
 					exit(1);
 				}
 
+				/*To take file name from user */
+				/*(file will be created in the same directory where the program is placed.*/
 				printf("Enter Destination File Name:");
 				scanf("%s",destFileName);
 				
+				/*To append .txt extension*/
 				strcat(destFileName,".txt");
 				FILE *fp2 = fopen(destFileName,"w");
 
@@ -46,6 +49,9 @@ void main(){
 					printf("File Not Found!!!!\n");
 					exit(0);
 				}
+
+				else
+					printf("\n----%s.txt has been created!!----\n",destFileName);
 				
 				/*Copying Content in Second File*/
 				CopyContent(fp1,fp2);
@@ -72,9 +78,17 @@ void main(){
 
 	}
 
-	system("md5sum source.txt");
-	printf("\n");
-	system("md5sum %s",
+	if(iPid ==0){
+		system("md5sum source.txt");
+		printf("\n");
+	
+		/*As destination file name is stored in saperate variable named"destFileName"*/
+		char cBuf[32];
+		sprintf(cBuf, "md5sum %s", destFileName);
+	
+		system(cBuf);
+		printf("\n");
+	}
 
 
 }
@@ -88,5 +102,5 @@ void CopyContent(FILE* fp1, FILE* fp2){
 		else
 			break;
 	}
-	printf("---- Copied Successfully ----\n\n");
+	printf("\n---- Copied Successfully ----\n\n");
 }

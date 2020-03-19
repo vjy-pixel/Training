@@ -7,6 +7,11 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<unistd.h>
+#include<stdlib.h>
+#include<errno.h>
+
+
+extern int errno;
 
 #define MSG_LEN 1024
 
@@ -32,12 +37,29 @@ void main(){
 
 	char cMsg[MSG_LEN];
 
-	char *serverIP = "127.0.0.1";
-	short serverPort = 8080;
-	char *clientIP = "127.0.0.1";
-	short clientPort = 8081;
+	char *serverIP = (char*)malloc(16);
+	//short serverPort = 8080;
+	char *clientIP = (char*)malloc(16);
+	//short clientPort = 8081;
 
+	printf("Enter Server IP:");
+	scanf("%s", serverIP);
+
+	printf("Enter Server Port:");
+	scanf("%hu", serverPort);
+
+	printf("Enter Client IP:");
+	scanf("%s", clientIP);
+	
+	printf("Enter Client Port:");
+	scanf("%hu", clientPort);
+	
 	iClientSkt = socket(AF_INET, SOCK_DGRAM, 0);
+
+	if(iClientSkt == -1){
+		perror("Error in Client Socket Creation!!!\n");
+		exit(EXIT_FAILURE);
+	}
 	
 	clientAdd.sin_family = AF_INET;
 	clientAdd.sin_port = htons(clientPort);
@@ -45,7 +67,14 @@ void main(){
 
 	printf("\nClient Ready!!!\n");
 	
-	bind(iClientSkt, (struct sockaddr *)&clientAdd, sizeof(clientAdd));
+	if(bind(iClientSkt, (struct sockaddr *)&clientAdd, sizeof(clientAdd))){
+		if(errno == EADDRINUSE){
+			printf("Assigned to another process already!!!\n");
+		}
+		else{
+			printf("Not able to bind!!!\n");
+		}
+	}
 
 	while(1){
 

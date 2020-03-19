@@ -7,8 +7,12 @@
 #include<netinet/in.h>
 #include<arpa/inet.h>
 #include<unistd.h>
+#include<stdlib.h>
+#include<errno.h>
 
+extern int errno;
 #define MSG_LEN 1024
+
 
 /*To add coloures in output*/
 
@@ -17,6 +21,7 @@ void cyn();
 
 /*Colour of Client Chat*/
 void yellow();
+
 void red();
 void reset();
 
@@ -27,21 +32,45 @@ void main(){
 	int iServerSkt, iClientSkt;
 	char cMsg[MSG_LEN];
 	
-	char *serverIP = "127.0.0.1";
-	short serverPort = 8080;
-	char *clientIP = "127.0.0.1";
-	short clientPort = 8081;
+	char *serverIP = (char*)malloc(16);
+	//short serverPort = 8080;
+	char *clientIP = (char*)malloc(16);
+	//short clientPort = 8081;
 	
+	printf("Enter Server IP:");
+	scanf("%s", serverIP);
+
+	printf("Enter Server Port:");
+	scanf("%hu", serverPort);
+
+	printf("Enter Client IP:");
+	scanf("%s", clientIP);
+	
+	printf("Enter Client Port:");
+	scanf("%hu", clientPort);
+
 	int iClientLen;
 	int iTemp;
 
 	iServerSkt = socket(AF_INET, SOCK_DGRAM, 0);
 
+	if(iClientSkt == -1){
+		perror("Error in Server Socket Creation!!!\n");
+		exit(EXIT_FAILURE);
+	}
+	
 	serverAdd.sin_family = AF_INET;
 	serverAdd.sin_port = htons(serverPort);
 	serverAdd.sin_addr.s_addr = inet_addr(serverIP);
 
-	bind(iServerSkt,(struct sockaddr*) &serverAdd, sizeof(serverAdd));
+	if(bind(iServerSkt,(struct sockaddr*) &serverAdd, sizeof(serverAdd))<0){
+		if(errno == EADDRINUSE){
+			printf("Assigned to another process already!!!\n");
+		}
+		else{
+			printf("Not able to bind!!!\n");
+		}
+	}
 
 	printf("\nServer Ready, Waiting for Client!!!\n");
 
