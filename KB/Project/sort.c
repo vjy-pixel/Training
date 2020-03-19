@@ -63,7 +63,8 @@ void sorting(Camera *camsPoint)
 {
 	for(int i=0;i <NO_OF_CAMS; i++)
 	{
-		printf("\ncam-%d:%ld-%ld",(camsPoint+(i))->iCamIndex, (camsPoint+(i))->lPreTime, (camsPoint+(i))->lPostTime);	}
+		printf("\ncam-%d:%ld-%ld",(camsPoint+(i))->iCamIndex, (camsPoint+(i))->lPreTime, (camsPoint+(i))->lPostTime);
+	}
 	printf("\n");
 
 
@@ -100,16 +101,16 @@ void merge(Camera* camsPoint, int iLow, int iMed, int iUp)
 	{		
 		if(p > iMed)
 		{
-			extraPre[extraIndex++] = (camsPoint+(q++))->lPreTime;
-			extraPost[extraIndex++] = (camsPoint+(q++))->lPostTime;
+			extraPre[extraIndex] = (camsPoint+(q))->lPreTime;
+			extraPost[extraIndex] = (camsPoint+(q))->lPostTime;
 			extraCam[extraIndex++] = (camsPoint+(q++))->iCamIndex;
 
 		}
 		
 		else if(q > iUp)
 		{
-			extraPre[extraIndex++] = (camsPoint+(p++))->lPreTime;
-			extraPost[extraIndex++] = (camsPoint+(p++))->lPostTime;
+			extraPre[extraIndex] = (camsPoint+(p))->lPreTime;
+			extraPost[extraIndex] = (camsPoint+(p))->lPostTime;
 			extraCam[extraIndex++] = (camsPoint+(p++))->iCamIndex;
 
 
@@ -117,8 +118,8 @@ void merge(Camera* camsPoint, int iLow, int iMed, int iUp)
 		
 		else if((camsPoint+(p))->lPreTime < (camsPoint+(q))->lPreTime)
 		{
-			extraPre[extraIndex++] = (camsPoint+(p++))->lPreTime;
-			extraPost[extraIndex++] = (camsPoint+(p++))->lPostTime;
+			extraPre[extraIndex] = (camsPoint+(p))->lPreTime;
+			extraPost[extraIndex] = (camsPoint+(p))->lPostTime;
 			extraCam[extraIndex++] = (camsPoint+(p++))->iCamIndex;
 
 
@@ -126,8 +127,8 @@ void merge(Camera* camsPoint, int iLow, int iMed, int iUp)
 		
 		else
 		{
-			extraPre[extraIndex++] = (camsPoint+(q++))->lPreTime;
-			extraPost[extraIndex++] = (camsPoint+(q++))->lPostTime;
+			extraPre[extraIndex] = (camsPoint+(q))->lPreTime;
+			extraPost[extraIndex] = (camsPoint+(q))->lPostTime;
 			extraCam[extraIndex++] = (camsPoint+(q++))->iCamIndex;
 		}
 
@@ -135,8 +136,8 @@ void merge(Camera* camsPoint, int iLow, int iMed, int iUp)
 
 	for(int i=0; i< extraIndex; i++)
 	{
-		(camsPoint+(iLow++))->lPreTime = extraPre[i]; 	
-		(camsPoint+(iLow++))->lPostTime = extraPost[i]; 
+		(camsPoint+(iLow))->lPreTime = extraPre[i]; 	
+		(camsPoint+(iLow))->lPostTime = extraPost[i]; 
 		(camsPoint+(iLow++))->iCamIndex = extraCam[i]; 
 
 	}
