@@ -1,1 +1,1 @@
-cmd_/home/vijay1319/Training/KB/Driver/drv.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/vijay1319/Training/KB/Driver/drv.ko /home/vijay1319/Training/KB/Driver/drv.o /home/vijay1319/Training/KB/Driver/drv.mod.o ;  true
+cmd_/home/vj1319/Training/KB/Driver/drv.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/vj1319/Training/KB/Driver/drv.ko /home/vj1319/Training/KB/Driver/drv.o /home/vj1319/Training/KB/Driver/drv.mod.o ;  true
