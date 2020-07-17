@@ -1,0 +1,1 @@
+cmd_/home/einfochips/Desktop/Tst/hello.ko := ld -r -m elf_x86_64  -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/einfochips/Desktop/Tst/hello.ko /home/einfochips/Desktop/Tst/hello.o /home/einfochips/Desktop/Tst/hello.mod.o ;  true
